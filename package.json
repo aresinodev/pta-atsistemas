@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "build": "ng build --prod --aot=true --buildOptimizer=true",
+    "dev": "ng serve --host 0.0.0.0 --port 1111 --live-reload false",
+    "test": "ng test --code-coverage",
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
