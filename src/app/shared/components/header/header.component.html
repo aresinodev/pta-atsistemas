@@ -1,0 +1,34 @@
+<header class="w-screen flex flex-row justify-between items-center p-4">
+  <div class="hamburger" (click)="openMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="title">
+
+  </div>
+
+  <!-- sidenav -->
+  <nav class="menu">
+    <p class="menu__title flex flex-row justify-between items-center">
+      <span class="menu__title--text">
+        {{ 'header.menu.title' | translate }}
+      </span>
+      <span class="menu__title--close" (click)="closeMenu()">&times;</span>
+    </p>
+    <ul class="menu__list list-none">
+      <li class="menu__list--link flex flex-row justify-between items-center">
+        <span class="text">{{ 'header.menu.movies' | translate }}</span>
+        <span class="arrow">→</span>
+      </li>
+      <li class="menu__list--link flex flex-row justify-between items-center">
+        <span class="text">{{ 'header.menu.actors' | translate }}</span>
+        <span class="arrow">→</span>
+      </li>
+      <li class="menu__list--link flex flex-row justify-between items-center">
+        <span class="text">{{ 'header.menu.movie-studios' | translate }}</span>
+        <span class="arrow">→</span>
+      </li>
+    </ul>
+  </nav>
+</header>

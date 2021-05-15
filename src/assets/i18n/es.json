@@ -1,3 +1,10 @@
 {
-  "title": "Hola, esto es una traducción en español"
+  "header": {
+    "menu": {
+      "title": "Menú",
+      "movies": "Películas",
+      "actors": "Actores",
+      "movie-studios": "Estudios"
+    }
+  }
 }
