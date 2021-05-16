@@ -40,29 +40,50 @@
   overflow-x: hidden;
   transition: 0.5s;
   background-color: #ebeaea;
-  box-shadow: 10px 0 5px -2px #888;
+  box-shadow: 4px 0 5px -2px #888;
 
   &__title {
     width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     &--text {
-
+      font-size: 2rem;
     }
 
     &--close {
-
+      font-size: 2rem;
+      font-weight: 300;
+      cursor: pointer;
     }
   }
 
   &__list {
     width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     &--link {
       border-bottom: 1px solid #000000;
+      margin-top: 1rem;
+      cursor: pointer;
+
+      .text {
+        font-size: 1.2rem;
+      }
+
+      .arrow {
+        font-size: 2rem;
+      }
 
       &:hover {
         color: cornflowerblue;
       }
+    }
+
+    .link-activated {
+      color: cornflowerblue;
     }
   }
 }

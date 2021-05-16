@@ -14,10 +14,12 @@
       <span class="menu__title--text">
         {{ 'header.menu.title' | translate }}
       </span>
-      <span class="menu__title--close" (click)="closeMenu()">&times;</span>
+      <span class="menu__title--close"
+            (click)="closeMenu()">&times;</span>
     </p>
-    <ul class="menu__list list-none">
-      <li class="menu__list--link flex flex-row justify-between items-center">
+    <ul class="menu__list list-none m-4">
+      <li class="menu__list--link flex flex-row justify-between items-center"
+          [routerLink]="['/movies']" routerLinkActive="link-activated">
         <span class="text">{{ 'header.menu.movies' | translate }}</span>
         <span class="arrow">→</span>
       </li>
