@@ -26,8 +26,20 @@
   }
 }
 
+.arrow-back {
+  width: 2%;
+  cursor: pointer;
+
+  &__image {
+    max-width: none !important;
+    width: 2rem;
+  }
+}
+
 .title {
   width: 94%;
+  font-size: 3rem;
+  font-weight: 800;
 }
 
 .menu {

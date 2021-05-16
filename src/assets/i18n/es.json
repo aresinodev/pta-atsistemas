@@ -5,6 +5,9 @@
       "movies": "Películas",
       "actors": "Actores",
       "movie-studios": "Estudios"
+    },
+    "movies-list": {
+      "title": "Películas"
     }
   }
 }

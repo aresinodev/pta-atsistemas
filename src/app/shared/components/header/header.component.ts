@@ -1,15 +1,31 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { NavigationEnd, Router } from '@angular/router';
+
+import { HeaderService } from '@services/header.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+export class HeaderComponent {
+  title$ = this.headerSvc.title$;
+  showBack = false;
 
-  ngOnInit(): void {
+  constructor(@Inject(DOCUMENT) private document: Document,
+              private headerSvc: HeaderService,
+              private router: Router) {
+    this.router.events
+    .subscribe(
+      (event) => {
+        if (event instanceof NavigationEnd) {
+          const { url } = event;
+          console.log('Ruta: ', url);
+          this.showBack = url !== '/movies';
+        }
+      }
+    );
   }
 
   openMenu(): void {
