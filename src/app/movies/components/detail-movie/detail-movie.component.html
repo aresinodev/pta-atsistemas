@@ -1,3 +1,65 @@
-<p>{{ movie | json }}</p>
-<p>{{ actors | json }}</p>
-<p>{{ companies | json }}</p>
+<!-- Delete movie modal -->
+<app-delete-movie *ngIf="deleteMovie" (close)="deleteMovie = !deleteMovie"></app-delete-movie>
+<!-- End delete movie modal -->
+
+<div class="detail-movie-container flex flex-col justify-start
+            items-center mx-auto relative">
+  <div class="detail-movie-container__image w-full">
+    <img class="object-cover"
+         rel="preload"
+         as="image"
+         loading="lazy"
+         [src]="movie?.poster"
+         [alt]="movie?.title"
+         notImage
+    />
+  </div>
+  <div class="detail-movie-container__info w-full mt-3">
+    <div class="detail-movie-container__info--rating">
+      <p class="title">{{ 'detail-movie.rating' | translate }}</p>
+      <span class="value text-left">{{ movie?.imdbRating | number: '1.0-1' }}</span>
+    </div>
+    <div class="detail-movie-container__info--time">
+      <p class="title">{{ 'detail-movie.duration' | translate }}</p>
+      <span class="value text-right">{{ movie?.duration | timeConverter }}</span>
+    </div>
+  </div>
+
+  <div class="detail-movie-container__actors w-full mt-8">
+    <p class="detail-movie-container__actors--title w-full">
+      {{ 'detail-movie.actors' | translate }}
+    </p>
+    <div class="detail-movie-container__actors--name w-full mt-2">
+      <span *ngFor="let actor of actors">{{ actor?.first_name }} {{ actor?.last_name }}</span>
+    </div>
+  </div>
+
+  <div class="detail-movie-container__companies w-full mt-8">
+    <p class="detail-movie-container__companies--title w-full">
+      {{ 'detail-movie.companies' | translate }}
+    </p>
+    <div class="detail-movie-container__companies--name w-full mt-2">
+      <span *ngFor="let company of companies">{{ company?.name }}</span>
+    </div>
+  </div>
+
+  <div class="detail-movie-container__genres w-full mt-8">
+    <p class="detail-movie-container__genres--title w-full">
+      {{ 'detail-movie.genres' | translate }}
+    </p>
+    <div class="detail-movie-container__genres--name w-full mt-2">
+      <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+    </div>
+  </div>
+
+  <div class="detail-movie-container__actions absolute w-full">
+    <button class="detail-movie-container__actions--edit-movie bg-green-600 hover:bg-green-500"
+    [routerLink]="['/movies/edit', movie?.id]">
+      <img src="assets/images/pencil.svg" alt="edit movie" />
+    </button>
+    <button class="detail-movie-container__actions--remove-movie bg-red-600 hover:bg-red-500 ml-1"
+    (click)="deleteMovie = !deleteMovie">
+      <img src="assets/images/trash.svg" alt="remove movie" />
+    </button>
+  </div>
+</div>

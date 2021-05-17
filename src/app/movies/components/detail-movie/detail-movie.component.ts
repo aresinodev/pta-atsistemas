@@ -21,6 +21,7 @@ export class DetailMovieComponent implements OnInit {
   movie: Movie;
   actors: Actor[];
   companies: Company[];
+  deleteMovie = false;
 
   constructor(private route: ActivatedRoute,
               private moviesSvc: MoviesService,
@@ -45,16 +46,11 @@ export class DetailMovieComponent implements OnInit {
     )
     .subscribe(
       (data) => {
-        // console.log('DATA', data);
         const [ movie, actors, companies ] = data;
         this.movie = movie;
         this.headerSvc.setTitle(`${ movie.title } (${ movie.year })`);
         this.actors = actors;
         this.companies = companies;
-
-        // console.log('MOVIE', movie);
-        // console.log('ACTORS', actors);
-        // console.log('COMPANIES', companies);
 
         this.spinnerSvc.hide();
       }

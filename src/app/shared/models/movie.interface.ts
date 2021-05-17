@@ -6,4 +6,5 @@ export interface Movie {
   year: number;
   imdbRating: number;
   actors: number[];
+  duration: number;
 }

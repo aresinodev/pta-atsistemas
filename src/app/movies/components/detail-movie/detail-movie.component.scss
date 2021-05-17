@@ -1,0 +1,106 @@
+.detail-movie-container {
+  width: 50%;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 400px;
+      height: 300px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--rating, &--time {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .title {
+        font-weight: 800;
+      }
+
+      .value {
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  &__actors, &__companies {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &--title {
+      border-bottom: 1px solid #000000;
+      font-weight: 800;
+    }
+
+    &--name {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-weight: 500;
+      color: #000000;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__genres {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &--title {
+      border-bottom: 1px solid #000000;
+      font-weight: 800;
+    }
+
+    &--name {
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+
+    &--edit-movie, &--remove-movie {
+      width: 3rem;
+      height: 3rem;
+      font-weight: 800;
+      border-radius: 25px;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #000000;
+
+      &:focus {
+        outline: none;
+      }
+
+      img {
+        width: 1.5rem;
+      }
+    }
+  }
+}

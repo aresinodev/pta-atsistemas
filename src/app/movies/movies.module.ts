@@ -9,13 +9,15 @@ import { DetailMovieComponent } from './components/detail-movie/detail-movie.com
 import { MovieCardComponent } from './components/movies-list/components/movie-card/movie-card.component';
 import { moviesRoutingModule } from '@movies/movies-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { DeleteMovieComponent } from './components/detail-movie/components/delete-movie/delete-movie.component';
 
 @NgModule({
   declarations: [
     MoviesListComponent,
     ManageMovieComponent,
     DetailMovieComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    DeleteMovieComponent
   ],
   imports: [
     CommonModule,

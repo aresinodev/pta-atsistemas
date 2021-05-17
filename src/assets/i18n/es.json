@@ -15,5 +15,18 @@
   },
   "movies-list": {
     "empty": "No hay películas"
+  },
+  "detail-movie": {
+    "rating": "Puntuación",
+    "duration": "Duración",
+    "actors": "Actores",
+    "companies": "Estudio",
+    "genres": "Géneros"
+  },
+  "delete-movie": {
+    "title": "Eliminar película",
+    "message": "¿Está seguro de eliminar la película?",
+    "cancel": "Cancelar",
+    "delete": "Eliminar"
   }
 }

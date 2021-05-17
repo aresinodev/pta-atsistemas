@@ -6,17 +6,20 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotImageDirective } from './directives/not-image.directive';
+import { TimeConverterPipe } from './pipes/time-converter.pipe';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
     HeaderComponent,
-    NotImageDirective
+    NotImageDirective,
+    TimeConverterPipe
   ],
   exports: [
     SpinnerComponent,
     HeaderComponent,
-    NotImageDirective
+    NotImageDirective,
+    TimeConverterPipe
   ],
   imports: [
     CommonModule,
