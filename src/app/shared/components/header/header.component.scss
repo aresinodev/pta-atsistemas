@@ -6,7 +6,7 @@ header {
   background-color: #ebeaea;
 
   .hamburger {
-    width: 2%;
+    width: 10%;
 
     span {
       display: block;
@@ -33,7 +33,7 @@ header {
   }
 
   .arrow-back {
-    width: 2%;
+    width: 10%;
 
     &__image {
       max-width: none !important;
@@ -42,7 +42,7 @@ header {
   }
 
   .title {
-    width: 94%;
+    width: 88%;
     font-size: 3rem;
     font-weight: 800;
   }
@@ -102,6 +102,14 @@ header {
       .link-activated {
         color: cornflowerblue;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    .title {
+      font-size: 1.2rem;
     }
   }
 }
