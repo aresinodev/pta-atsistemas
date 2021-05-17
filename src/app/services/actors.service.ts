@@ -11,7 +11,7 @@ import { ACTORS } from '../app.properties';
   providedIn: 'root'
 })
 export class ActorsService {
-  private actorsSubject = new BehaviorSubject<Actor[]>(null);
+  private actorsSubject = new BehaviorSubject<Actor[]>([]);
   actors$ = this.actorsSubject.asObservable();
 
   constructor(private http: HttpClient) {

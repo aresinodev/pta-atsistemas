@@ -3,14 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@services/movies.service';
 import { Movie } from '../../../shared/models/movie.interface';
 import { HeaderService } from '@services/header.service';
-import { switchMap, tap } from 'rxjs/operators';
+import { elementAt, switchMap } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 import { Actor } from '../../../shared/models/actor.interface';
 import { Company } from '../../../shared/models/company.interface';
 import { CompaniesService } from '@services/companies.service';
 import { ActorsService } from '@services/actors.service';
 import { SpinnerService } from '@services/spinner.service';
-import { forkJoin } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-detail-movie',
@@ -38,22 +38,23 @@ export class DetailMovieComponent implements OnInit {
     .pipe(
       switchMap((params) => {
         const { id } = params;
-        return forkJoin([this.moviesSvc.getMovie(+id),
+        return combineLatest([this.moviesSvc.getMovie(+id),
         this.actorsSvc.getActorsByMovie(+id), this.companiesSvc.getCompaniesByMovie(+id)])
-      })
+      }),
+      elementAt(2)
     )
     .subscribe(
       (data) => {
-        console.log('DATA', data);
-        // const [ movie, actors, companies ] = data;
-        /*this.movie = movie;
+        // console.log('DATA', data);
+        const [ movie, actors, companies ] = data;
+        this.movie = movie;
         this.headerSvc.setTitle(`${ movie.title } (${ movie.year })`);
         this.actors = actors;
-        this.companies = companies;*/
+        this.companies = companies;
 
         // console.log('MOVIE', movie);
         // console.log('ACTORS', actors);
-        // console.log('COMPANIES', companies)
+        // console.log('COMPANIES', companies);
 
         this.spinnerSvc.hide();
       }

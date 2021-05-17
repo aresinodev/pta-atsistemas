@@ -11,7 +11,7 @@ import { Movie } from '../shared/models/movie.interface';
   providedIn: 'root'
 })
 export class MoviesService {
-  private moviesSubject = new BehaviorSubject<Movie[]>(null);
+  private moviesSubject = new BehaviorSubject<Movie[]>([]);
   movies$ = this.moviesSubject.asObservable();
 
   constructor(private http: HttpClient) {
