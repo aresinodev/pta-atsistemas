@@ -1,1 +1,22 @@
-<p>movie-card works!</p>
+<article class="card p-3">
+  <h3 class="card__title flex flex-row justify-start items-center font-extrabold mb-1">
+    {{ movie.title }}
+  </h3>
+  <a [routerLink]="['/movies/edit', movie.id]" class="card__link">
+    <figure>
+      <img
+        rel="preload"
+        as="image"
+        loading="lazy"
+        [src]="movie.poster"
+        [alt]="movie.title"
+        notImage
+      />
+    </figure>
+  </a>
+
+  <div class="card__genres mt-3">
+    <span class="card__genres--genre"
+          *ngFor="let genre of movie.genre">#{{ genre }}</span>
+  </div>
+</article>

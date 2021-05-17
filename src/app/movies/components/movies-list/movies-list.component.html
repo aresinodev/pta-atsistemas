@@ -1,1 +1,16 @@
-<p>movies-list works!</p>
+<section class="movies-list-container mx-auto">
+  <div class="movies-list-container__content">
+  <ng-container *ngIf="movies$ | async as movies; else empty">
+    <app-movie-card *ngFor="let movie of movies"
+                    [movie]="movie"></app-movie-card>
+  </ng-container>
+  <ng-template #empty>
+    <div class="movies-list-container__empty">
+      <h1 class="movies-list-container__empty--title">{{ 'movies-list.empty' | translate }}</h1>
+    </div>
+  </ng-template>
+  </div>
+</section>
+
+<button class="add-movie rounded bg-blue-500"
+        (click)="goToCreateMovie()">+</button>

@@ -22,7 +22,7 @@ export class MoviesService {
     this.http.get<Movie[]>(MOVIES)
     .pipe(
       tap((data: Movie[]) => {
-        this.moviesSubject.next(data)
+        this.moviesSubject.next(data);
       })
     )
     .subscribe();

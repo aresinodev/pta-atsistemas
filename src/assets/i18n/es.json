@@ -8,6 +8,12 @@
     },
     "movies-list": {
       "title": "Películas"
+    },
+    "manage-movie": {
+      "create-title": "Nueva película"
     }
+  },
+  "movies-list": {
+    "empty": "No hay películas"
   }
 }

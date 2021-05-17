@@ -1,13 +1,13 @@
 <header class="w-screen flex flex-row justify-between items-center p-4">
-  <div class="hamburger" *ngIf="!showBack; else arrowBack"
+  <div class="hamburger cursor-pointer" *ngIf="!showBack; else arrowBack"
        (click)="openMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
   <ng-template #arrowBack>
-    <div class="arrow-back">
-      <img class="arrow-back__image" src="assets/images/left-arrow.svg" alt="left arrow" />
+    <div class="arrow-back cursor-pointer" (click)="back()">
+      <img class="arrow-back__image" src="assets/images/left-arrow.svg" alt="left arrow" loading="lazy" />
     </div>
   </ng-template>
   <div class="title text-center">

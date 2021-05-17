@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { HeaderService } from '@services/header.service';
@@ -15,14 +15,14 @@ export class HeaderComponent {
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private headerSvc: HeaderService,
-              private router: Router) {
+              private router: Router,
+              private _location: Location) {
     this.router.events
     .subscribe(
       (event) => {
         if (event instanceof NavigationEnd) {
-          const { url } = event;
-          console.log('Ruta: ', url);
-          this.showBack = url !== '/movies';
+          const { urlAfterRedirects } = event;
+          this.showBack = urlAfterRedirects !== '/movies';
         }
       }
     );
@@ -34,5 +34,9 @@ export class HeaderComponent {
 
   closeMenu(): void {
     (this.document.querySelector('nav') as HTMLElement).style.width = '0';
+  }
+
+  back(): void {
+    this._location.back();
   }
 }
