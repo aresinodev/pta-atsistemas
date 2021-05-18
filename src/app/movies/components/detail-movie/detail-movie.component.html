@@ -1,5 +1,5 @@
 <!-- Delete movie modal -->
-<app-delete-movie *ngIf="deleteMovie" (close)="deleteMovie = !deleteMovie"></app-delete-movie>
+<app-delete-movie *ngIf="deleteMovie" (close)="deleteMovie = !deleteMovie" [movie]="movie"></app-delete-movie>
 <!-- End delete movie modal -->
 
 <div class="detail-movie-container flex flex-col justify-start

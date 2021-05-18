@@ -45,5 +45,9 @@
     "not-found": "Sin resultados",
     "select-actor": "Selecciona un actor",
     "select-company": "Selecciona un estudio"
+  },
+  "errors": {
+    "title": "Error",
+    "server-error": "Se ha producido un error en el servidor"
   }
 }

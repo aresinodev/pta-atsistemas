@@ -11,7 +11,6 @@ export class HeaderService {
   constructor() {}
 
   public setTitle(title: string): void {
-    console.log(title);
     this.titleSubject.next(title);
   }
 }

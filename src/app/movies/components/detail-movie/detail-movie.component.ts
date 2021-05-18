@@ -1,16 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MoviesService } from '@services/movies.service';
-import { Movie } from '../../../shared/models/movie.interface';
-import { HeaderService } from '@services/header.service';
-import { elementAt, switchMap } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
-import { Actor } from '../../../shared/models/actor.interface';
-import { Company } from '../../../shared/models/company.interface';
+
+import { switchMap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
+
+import { Actor } from '@shared/models/actor.interface';
+import { Company } from '@shared/models/company.interface';
 import { CompaniesService } from '@services/companies.service';
 import { ActorsService } from '@services/actors.service';
 import { SpinnerService } from '@services/spinner.service';
-import { combineLatest } from 'rxjs';
+import { MoviesService } from '@services/movies.service';
+import { Movie } from '@shared/models/movie.interface';
+import { HeaderService } from '@services/header.service';
 
 @Component({
   selector: 'app-detail-movie',
@@ -41,8 +43,7 @@ export class DetailMovieComponent implements OnInit {
         const { id } = params;
         return combineLatest([this.moviesSvc.getMovie(+id),
         this.actorsSvc.getActorsByMovie(+id), this.companiesSvc.getCompaniesByMovie(+id)])
-      }),
-      elementAt(2)
+      })
     )
     .subscribe(
       (data) => {

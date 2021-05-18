@@ -1,32 +1,21 @@
 import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+import { find, mergeMap } from 'rxjs/operators';
+
+import { Movie } from '@shared/models/movie.interface';
+import { DataService } from '@services/data.service';
 import { HttpClient } from '@angular/common/http';
-
-import { BehaviorSubject, Observable } from 'rxjs';
-import { find, mergeMap, tap } from 'rxjs/operators';
-
 import { MOVIES } from '../app.properties';
-import { Movie } from '../shared/models/movie.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-  private moviesSubject = new BehaviorSubject<Movie[]>([]);
-  movies$ = this.moviesSubject.asObservable();
+  movies$ = this.dataSvc.movies$;
 
-  constructor(private http: HttpClient) {
-    this.getMoviesData();
-  }
-
-  private getMoviesData(): void {
-    this.http.get<Movie[]>(MOVIES)
-    .pipe(
-      tap((data: Movie[]) => {
-        this.moviesSubject.next(data);
-      })
-    )
-    .subscribe();
-  }
+  constructor(private dataSvc: DataService,
+              private http: HttpClient) {}
 
   public getMovie(id: number): Observable<Movie> {
     // @ts-ignore
@@ -35,5 +24,13 @@ export class MoviesService {
       mergeMap((movies: Movie[]) => movies),
       find((movie: Movie) => movie?.id === id)
     );
+  }
+
+  public delete(id: number): Observable<Movie> {
+    return this.http.delete<Movie>(`${ MOVIES }/${ id }`);
+  }
+
+  public deleteMovieStore(id: number): void {
+    this.dataSvc.deleteMovie(id);
   }
 }
