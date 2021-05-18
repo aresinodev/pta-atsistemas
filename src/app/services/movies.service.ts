@@ -26,11 +26,19 @@ export class MoviesService {
     );
   }
 
+  public create(movie: Partial<Movie>): Observable<Movie> {
+    return this.http.post<Movie>(`${ MOVIES }`, movie);
+  }
+
   public delete(id: number): Observable<Movie> {
     return this.http.delete<Movie>(`${ MOVIES }/${ id }`);
   }
 
   public deleteMovieStore(id: number): void {
     this.dataSvc.deleteMovie(id);
+  }
+
+  public addMovieStore(movie: Movie): void {
+    this.dataSvc.addMovie(movie);
   }
 }

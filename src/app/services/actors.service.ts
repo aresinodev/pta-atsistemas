@@ -6,18 +6,6 @@ import { find, map, mergeMap } from 'rxjs/operators';
 import { Actor } from '@shared/models/actor.interface';
 import { DataService } from '@services/data.service';
 
-type ActorDb = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  gender: string;
-  bornCity: string;
-  birthdate: string;
-  img: string;
-  rating: number;
-  movies: number[];
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -39,5 +27,9 @@ export class ActorsService {
     .pipe(
       map((actors: Actor[]) => actors?.filter((actor: Actor) => actor?.movies.includes(movieId)))
     );
+  }
+
+  public actorsByMovie(id: number): Actor[] {
+    return this.dataSvc.getActorsByMovie(id);
   }
 }

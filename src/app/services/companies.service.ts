@@ -14,14 +14,14 @@ export class CompaniesService {
 
   constructor(private dataSvc: DataService) {}
 
-  /*public getCompany(id: number): Company {
-    return this.companiesSubject.getValue().find((company) => company.id === id);
-  }*/
-
   public getCompaniesByMovie(movieId: number): Observable<Company[]> {
     return this.companies$
     .pipe(
       map((companies: Company[]) => companies?.filter((company: Company) => company?.movies.includes(movieId)))
     );
+  }
+
+  public companiesByMovie(id: number): Company[] {
+    return this.dataSvc.getCompanyByMovie(id);
   }
 }

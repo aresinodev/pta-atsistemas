@@ -48,6 +48,8 @@
   },
   "errors": {
     "title": "Error",
-    "server-error": "Se ha producido un error en el servidor"
+    "server-error": "Se ha producido un error en el servidor",
+    "required": "El campo es obligatorio",
+    "year-incorrect": "Debe de tener 4 dígitos"
   }
 }

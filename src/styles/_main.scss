@@ -49,3 +49,16 @@ a {
     cursor: not-allowed;
   }
 }
+
+/* ERRORS FORM */
+.invalid {
+  border: 1px solid tomato;
+  transition: border 0.5s ease-in-out;
+}
+
+.errors__error {
+  color: tomato;
+  font-size: 0.8rem;
+  animation: fade-in;
+  animation-duration: 0.5s;
+}

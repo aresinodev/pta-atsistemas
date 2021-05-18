@@ -79,4 +79,19 @@ export class DataService {
 
     this.moviesSubject.next([...newArrMovies]);
   }
+
+  public addMovie(movie: Movie): void {
+    const movies = this.moviesSubject.getValue();
+    const newArrMovies = [...movies, movie];
+
+    this.moviesSubject.next([...newArrMovies]);
+  }
+
+  public getActorsByMovie(id: number): Actor[] {
+    return this.actorsSubject.getValue().filter((actor: Actor) => actor.movies.includes(id));
+  }
+
+  public getCompanyByMovie(id: number): Company[] {
+    return this.companiesSubject.getValue().filter((company: Company) => company.movies.includes(id));
+  }
 }

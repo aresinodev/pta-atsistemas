@@ -2,22 +2,44 @@
             items-center">
   <form class="w-1/9 md:w-1/7 lg:w-1/3 flex flex-col justify-start items-start"
         [formGroup]="movieForm" (ngSubmit)="movie ? update() : save()">
+    <!-- Title field -->
     <div class="w-full flex flex-col justify-start items-start mt-2">
       <label for="title">
         {{ 'manage-movie.title' | translate }}
         <span class="asterisk">*</span>
       </label>
       <input type="text" class="w-full" id="title" placeholder="{{ 'manage-movie.title' | translate }}"
-             formControlName="title">
+             formControlName="title" [ngClass]="{ 'invalid': movieForm?.invalid &&
+             (formControls?.title?.dirty || formControls?.title?.touched)
+             && formControls?.title?.errors }">
+      <div *ngIf="movieForm?.invalid &&
+                  (formControls?.title?.dirty || formControls?.title?.touched)
+                  && formControls?.title?.errors" class="errors flex flex-col justify-start
+                  items-start w-full">
+        <div class="errors__error">
+          {{ 'errors.required' | translate }}
+        </div>
+      </div>
     </div>
 
+    <!-- Poster field -->
     <div class="w-full flex flex-col justify-start items-start mt-2">
       <label for="poster">
         {{ 'manage-movie.poster' | translate }}
         <span class="asterisk">*</span>
       </label>
       <input type="text" class="w-full" id="poster" placeholder="{{ 'manage-movie.poster' | translate }}"
-             formControlName="poster">
+             formControlName="poster" [ngClass]="{ 'invalid': movieForm?.invalid &&
+             (formControls?.poster?.dirty || formControls?.poster?.touched)
+             && formControls?.poster?.errors }">
+      <div *ngIf="movieForm?.invalid &&
+                  (formControls?.poster?.dirty || formControls?.poster?.touched)
+                  && formControls?.poster?.errors" class="errors flex flex-col justify-start
+                  items-start w-full">
+        <div class="errors__error">
+          {{ 'errors.required' | translate }}
+        </div>
+      </div>
     </div>
 
     <!-- Genres (ng-select)-->
@@ -37,8 +59,17 @@
                  [virtualScroll]="true"
                  notFoundText="{{ 'manage-movie.not-found' | translate }}"
                  [(ngModel)]="selectedGenres"
-                 [ngModelOptions]="{ standalone: true }">
+                 [ngModelOptions]="{ standalone: true }"
+                 [ngClass]="{ 'invalid': movieForm?.invalid && submitted &&
+                 (selectedGenres && selectedGenres?.length === 0)}">
       </ng-select>
+      <div *ngIf="movieForm.invalid && submitted &&
+        (selectedGenres && selectedGenres?.length === 0)"
+           class="errors flex flex-col justify-start items-start w-full">
+          <span class="errors__error">
+            {{ 'errors.required' | translate }}
+          </span>
+      </div>
     </div>
 
     <!-- Actors (ng-select) -->
@@ -57,8 +88,17 @@
                  [virtualScroll]="true"
                  [ngModelOptions]="{ standalone: true }"
                  notFoundText="{{ 'manage-movie.not-found' | translate }}"
-                 [(ngModel)]="selectedActors">
+                 [(ngModel)]="selectedActors"
+                 [ngClass]="{ 'invalid': movieForm?.invalid && submitted &&
+                 (selectedActors && selectedActors?.length === 0)}">
       </ng-select>
+      <div *ngIf="movieForm.invalid && submitted &&
+        (selectedActors && selectedActors?.length === 0)"
+           class="errors flex flex-col justify-start items-start w-full">
+          <span class="errors__error">
+            {{ 'errors.required' | translate }}
+          </span>
+      </div>
     </div>
 
     <!-- Company (ng-select) -->
@@ -72,42 +112,96 @@
                  class="custom w-full"
                  [hideSelected]="true"
                  bindLabel="name"
+                 bindValue="id"
                  formControlName="company"
                  placeholder="{{ 'manage-movie.select-company' | translate }}"
                  [virtualScroll]="true"
-                 notFoundText="{{ 'manage-movie.not-found' | translate }}">
+                 notFoundText="{{ 'manage-movie.not-found' | translate }}"
+                 [ngClass]="{ 'invalid': movieForm?.invalid &&
+                 (formControls?.company?.dirty || formControls?.company?.touched)
+                 && formControls?.company?.errors }">
       </ng-select>
+      <div *ngIf="movieForm?.invalid &&
+                  (formControls?.company?.dirty || formControls?.company?.touched)
+                  && formControls?.company?.errors" class="errors flex flex-col justify-start
+                  items-start w-full">
+        <div class="errors__error">
+          {{ 'errors.required' | translate }}
+        </div>
+      </div>
     </div>
 
+    <!-- Year field -->
     <div class="w-full flex flex-col justify-start items-start mt-2">
       <label for="year">
         {{ 'manage-movie.year' | translate }}
         <span class="asterisk">*</span>
       </label>
-      <input type="number" class="w-full" id="year" placeholder="{{ 'manage-movie.year' | translate }}"
-             formControlName="year">
+      <input type="text" class="w-full" id="year" placeholder="{{ 'manage-movie.year' | translate }}"
+             formControlName="year" maxlength="4" minlength="4" digitOnly
+             [ngClass]="{ 'invalid': movieForm?.invalid &&
+             (formControls?.year?.dirty || formControls?.year?.touched)
+             && formControls?.year?.errors }">
+      <div *ngIf="movieForm?.invalid &&
+           (formControls?.year?.dirty || formControls?.year?.touched)
+           && formControls?.year?.errors"
+           class="errors flex flex-col justify-start items-start w-full">
+          <span *ngIf="formControls?.year?.errors && formControls?.year?.errors?.required"
+                class="errors__error">
+            {{ 'errors.required' | translate }}
+          </span>
+        <span *ngIf="formControls?.year?.errors && formControls?.year?.errors?.minlength"
+              class="errors__error">
+            {{ 'errors.year-incorrect' | translate }}
+          </span>
+      </div>
     </div>
 
+    <!-- Duration field -->
     <div class="w-full flex flex-col justify-start items-start mt-2">
       <label for="duration">
         {{ 'manage-movie.duration' | translate }}
         <span class="asterisk">*</span>
       </label>
-      <input type="number" class="w-full" id="duration" placeholder="{{ 'manage-movie.duration' | translate }}"
-             formControlName="duration">
+      <input type="text" class="w-full" id="duration" placeholder="{{ 'manage-movie.duration' | translate }}"
+             formControlName="duration" digitOnly
+             [ngClass]="{ 'invalid': movieForm?.invalid &&
+             (formControls?.duration?.dirty || formControls?.duration?.touched)
+             && formControls?.duration?.errors }">
+      <div *ngIf="movieForm?.invalid &&
+                  (formControls?.duration?.dirty || formControls?.duration?.touched)
+                  && formControls?.duration?.errors" class="errors flex flex-col justify-start
+                  items-start w-full">
+        <div class="errors__error">
+          {{ 'errors.required' | translate }}
+        </div>
+      </div>
     </div>
 
+    <!-- Rating field -->
     <div class="w-full flex flex-col justify-start items-start mt-2">
       <label for="rating">
         {{ 'manage-movie.rating' | translate }}
         <span class="asterisk">*</span>
       </label>
-      <input type="number" class="w-full" id="rating" placeholder="{{ 'manage-movie.rating' | translate }}"
-             formControlName="rating">
+      <input type="text" class="w-full" id="rating" placeholder="{{ 'manage-movie.rating' | translate }}"
+             formControlName="rating" digitOnly [decimal]="true"
+             [ngClass]="{ 'invalid': movieForm?.invalid &&
+             (formControls?.rating?.dirty || formControls?.rating?.touched)
+             && formControls?.rating?.errors }">
+      <div *ngIf="movieForm?.invalid &&
+                  (formControls?.rating?.dirty || formControls?.rating?.touched)
+                  && formControls?.rating?.errors" class="errors flex flex-col justify-start
+                  items-start w-full">
+        <div class="errors__error">
+          {{ 'errors.required' | translate }}
+        </div>
+      </div>
     </div>
 
     <div class="w-full flex justify-end items-center mt-8">
-      <button type="submit" class="manage-movie-container--save bg-blue-600 hover:bg-blue-500">
+      <button type="submit" class="manage-movie-container--save bg-blue-600 hover:bg-blue-500"
+      [disabled]="disableForm()" [ngClass]="{ 'disabled': disableForm() }">
         <img src="assets/images/icon-save.svg" alt="save movie" />
       </button>
     </div>
