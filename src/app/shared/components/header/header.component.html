@@ -1,4 +1,4 @@
-<header class="w-screen flex flex-row justify-between items-center p-4">
+<header class="w-screen flex flex-row justify-between items-center p-2">
   <div class="hamburger cursor-pointer" *ngIf="!showBack; else arrowBack"
        (click)="openMenu()">
     <span></span>
@@ -6,9 +6,10 @@
     <span></span>
   </div>
   <ng-template #arrowBack>
-    <div class="arrow-back cursor-pointer" (click)="back()">
-      <img class="arrow-back__image" src="assets/images/left-arrow.svg" alt="left arrow" loading="lazy" />
-    </div>
+<!--    <div class="arrow-back">-->
+      <img class="arrow-back__image cursor-pointer" src="assets/images/left-arrow.svg"
+           alt="left arrow" loading="lazy" (click)="back()" />
+<!--    </div>-->
   </ng-template>
   <div class="title text-center">
     {{ title$ | async }}

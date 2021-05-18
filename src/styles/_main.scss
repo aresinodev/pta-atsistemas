@@ -30,3 +30,22 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.asterisk {
+  font-weight: 800;
+  color: tomato;
+}
+
+.disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+
+  &:hover {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+}

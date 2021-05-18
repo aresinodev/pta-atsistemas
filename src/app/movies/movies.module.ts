@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -10,6 +11,7 @@ import { MovieCardComponent } from './components/movies-list/components/movie-ca
 import { moviesRoutingModule } from '@movies/movies-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteMovieComponent } from './components/detail-movie/components/delete-movie/delete-movie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { DeleteMovieComponent } from './components/detail-movie/components/delet
     CommonModule,
     moviesRoutingModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    FormsModule
   ]
 })
 export class MoviesModule {}

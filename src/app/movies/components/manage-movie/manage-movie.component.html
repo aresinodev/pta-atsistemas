@@ -1,1 +1,115 @@
-<p>manage-movie works!</p>
+<div class="manage-movie-container w-full flex flex-col justify-start
+            items-center">
+  <form class="w-1/9 md:w-1/7 lg:w-1/3 flex flex-col justify-start items-start"
+        [formGroup]="movieForm" (ngSubmit)="movie ? update() : save()">
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="title">
+        {{ 'manage-movie.title' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <input type="text" class="w-full" id="title" placeholder="{{ 'manage-movie.title' | translate }}"
+             formControlName="title">
+    </div>
+
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="poster">
+        {{ 'manage-movie.poster' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <input type="text" class="w-full" id="poster" placeholder="{{ 'manage-movie.poster' | translate }}"
+             formControlName="poster">
+    </div>
+
+    <!-- Genres (ng-select)-->
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="genres">
+        {{ 'manage-movie.genres' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <ng-select id="genres"
+                 [items]="genresList"
+                 class="custom w-full"
+                 [multiple]="true"
+                 [addTag]="addGenre"
+                 addTagText="{{ 'manage-movie.add-genre' | translate }}"
+                 bindLabel="name"
+                 placeholder="{{ 'manage-movie.genre' | translate }}"
+                 [virtualScroll]="true"
+                 notFoundText="{{ 'manage-movie.not-found' | translate }}"
+                 [(ngModel)]="selectedGenres"
+                 [ngModelOptions]="{ standalone: true }">
+      </ng-select>
+    </div>
+
+    <!-- Actors (ng-select) -->
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="actors">
+        {{ 'manage-movie.actors' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <ng-select id="actors"
+                 [items]="actors$ | async"
+                 class="custom w-full"
+                 [hideSelected]="true"
+                 [multiple]="true"
+                 bindLabel="name"
+                 placeholder="{{ 'manage-movie.select-actor' | translate }}"
+                 [virtualScroll]="true"
+                 [ngModelOptions]="{ standalone: true }"
+                 notFoundText="{{ 'manage-movie.not-found' | translate }}"
+                 [(ngModel)]="selectedActors">
+      </ng-select>
+    </div>
+
+    <!-- Company (ng-select) -->
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="company">
+        {{ 'manage-movie.company' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <ng-select id="company"
+                 [items]="companies$ | async"
+                 class="custom w-full"
+                 [hideSelected]="true"
+                 bindLabel="name"
+                 formControlName="company"
+                 placeholder="{{ 'manage-movie.select-company' | translate }}"
+                 [virtualScroll]="true"
+                 notFoundText="{{ 'manage-movie.not-found' | translate }}">
+      </ng-select>
+    </div>
+
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="year">
+        {{ 'manage-movie.year' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <input type="number" class="w-full" id="year" placeholder="{{ 'manage-movie.year' | translate }}"
+             formControlName="year">
+    </div>
+
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="duration">
+        {{ 'manage-movie.duration' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <input type="number" class="w-full" id="duration" placeholder="{{ 'manage-movie.duration' | translate }}"
+             formControlName="duration">
+    </div>
+
+    <div class="w-full flex flex-col justify-start items-start mt-2">
+      <label for="rating">
+        {{ 'manage-movie.rating' | translate }}
+        <span class="asterisk">*</span>
+      </label>
+      <input type="number" class="w-full" id="rating" placeholder="{{ 'manage-movie.rating' | translate }}"
+             formControlName="rating">
+    </div>
+
+    <div class="w-full flex justify-end items-center mt-8">
+      <button type="submit" class="manage-movie-container--save bg-blue-600 hover:bg-blue-500">
+        <img src="assets/images/icon-save.svg" alt="save movie" />
+      </button>
+    </div>
+  </form>
+</div>

@@ -28,5 +28,22 @@
     "message": "¿Está seguro de eliminar la película?",
     "cancel": "Cancelar",
     "delete": "Eliminar"
+  },
+  "manage-movie": {
+    "create": "Nueva película",
+    "edit": "Editar película",
+    "title": "Título",
+    "poster": "Póster (url)",
+    "genres": "Géneros",
+    "actors": "Actores",
+    "company": "Estudio",
+    "year": "Año",
+    "duration": "Duración (minutos)",
+    "rating": "Puntuación",
+    "genre": "Añade un género",
+    "add-genre": "Añade el género",
+    "not-found": "Sin resultados",
+    "select-actor": "Selecciona un actor",
+    "select-company": "Selecciona un estudio"
   }
 }

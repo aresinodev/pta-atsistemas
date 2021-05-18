@@ -30,7 +30,7 @@
       {{ 'detail-movie.actors' | translate }}
     </p>
     <div class="detail-movie-container__actors--name w-full mt-2">
-      <span *ngFor="let actor of actors">{{ actor?.first_name }} {{ actor?.last_name }}</span>
+      <span *ngFor="let actor of actors">{{ actor?.name }}</span>
     </div>
   </div>
 
