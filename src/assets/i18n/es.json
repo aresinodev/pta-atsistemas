@@ -51,5 +51,8 @@
     "server-error": "Se ha producido un error en el servidor",
     "required": "El campo es obligatorio",
     "year-incorrect": "Debe de tener 4 dígitos"
-  }
+  },
+  "film-added": "Película añadida",
+  "film-updated": "Película actualizada",
+  "film-deleted": "Película eliminada"
 }
