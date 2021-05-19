@@ -1,6 +1,6 @@
 <app-spinner></app-spinner>
 <app-header></app-header>
 
-<div class="container mx-auto">
-  <router-outlet></router-outlet>
+<div class="container mx-auto" [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
 </div>

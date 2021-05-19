@@ -21,7 +21,7 @@ export class CompaniesService {
     );
   }
 
-  public companiesByMovie(id: number): Company[] {
-    return this.dataSvc.getCompanyByMovie(id);
+  public getCompany(id: number): Company {
+    return this.dataSvc.getCompany(id);
   }
 }

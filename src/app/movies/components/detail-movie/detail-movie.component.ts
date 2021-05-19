@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
 import { switchMap } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
 
 import { Actor } from '@shared/models/actor.interface';
 import { Company } from '@shared/models/company.interface';
@@ -21,7 +20,7 @@ import { HeaderService } from '@services/header.service';
 export class DetailMovieComponent implements OnInit {
   movie: Movie;
   actors: Actor[];
-  companies: Company[];
+  company: Company;
   deleteMovie = false;
 
   constructor(private route: ActivatedRoute,
@@ -40,17 +39,16 @@ export class DetailMovieComponent implements OnInit {
     .pipe(
       switchMap((params) => {
         const { id } = params;
-        return combineLatest([this.moviesSvc.getMovie(+id),
-        this.actorsSvc.getActorsByMovie(+id), this.companiesSvc.getCompaniesByMovie(+id)])
+
+        return this.moviesSvc.getMovie(+id);
       })
     )
     .subscribe(
-      (data) => {
-        const [ movie, actors, companies ] = data;
+      (movie) => {
         this.movie = movie;
         this.headerSvc.setTitle(`${ movie.title } (${ movie.year })`);
-        this.actors = actors;
-        this.companies = companies;
+        this.actors = this.actorsSvc.getActorsByIds(movie.actors);
+        this.company = this.companiesSvc.getCompany(movie.company);
 
         this.spinnerSvc.hide();
       }

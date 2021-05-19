@@ -135,16 +135,15 @@ export class ManageMovieComponent implements OnInit {
 
   private fillForm(): void {
     if (this.movie) {
-      this.selectedActors = this.actorsSvc.actorsByMovie(this.movie.id);
+      this.selectedActors = this.actorsSvc.getActorsByIds(this.movie.actors);
       this.selectedGenres = this.movie.genre;
-      const [ company ] = this.companiesSvc.companiesByMovie(this.movie.id);
 
       this.formControls.title.setValue(this.movie.title);
       this.formControls.poster.setValue(this.movie.poster);
       this.formControls.year.setValue(this.movie.year);
       this.formControls.duration.setValue(this.movie.duration);
       this.formControls.rating.setValue(this.movie.imdbRating);
-      this.formControls.company.setValue(company.id);
+      this.formControls.company.setValue(this.movie.company);
     }
   }
 }

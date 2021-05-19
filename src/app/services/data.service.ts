@@ -95,11 +95,19 @@ export class DataService {
     this.moviesSubject.next([...movies]);
   }
 
-  public getActorsByMovie(id: number): Actor[] {
-    return this.actorsSubject.getValue().filter((actor: Actor) => actor.movies.includes(id));
+  public getActorsByIds(ids: number[]): Actor[] {
+    const actors = this.actorsSubject.getValue();
+    const actorsFound: Actor[] = [];
+
+    for(const id of ids) {
+      const actor = actors.find((item: Actor) => item.id === id);
+      actorsFound.push(actor);
+    }
+
+    return actorsFound;
   }
 
-  public getCompanyByMovie(id: number): Company[] {
-    return this.companiesSubject.getValue().filter((company: Company) => company.movies.includes(id));
+  public getCompany(id: number): Company {
+    return this.companiesSubject.getValue().find((company: Company) => company.id === id);
   }
 }

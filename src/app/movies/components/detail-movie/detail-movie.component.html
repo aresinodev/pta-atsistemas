@@ -46,7 +46,7 @@
         {{ 'detail-movie.companies' | translate }}
       </p>
       <div class="flex flex-col justify-start items-start w-full mt-2 font-medium text-sm">
-        <span *ngFor="let company of companies">{{ company?.name }}</span>
+        <span>{{ company?.name }}</span>
       </div>
     </div>
 
@@ -55,7 +55,7 @@
         {{ 'detail-movie.genres' | translate }}
       </p>
       <div class="flex justify-start items-center w-full
-    mt-2 font-extrabold text-sm gap-2">
+           mt-2 font-extrabold text-sm gap-2">
         <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
       </div>
     </div>
