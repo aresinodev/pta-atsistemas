@@ -1,4 +1,4 @@
-<section class="movies-list-container mx-auto">
+<section class="movies-list-container mx-auto pb-4">
   <div class="movies-list-container__content">
   <ng-container *ngIf="movies$ | async as movies; else empty">
     <app-movie-card *ngFor="let movie of movies"
@@ -6,7 +6,9 @@
   </ng-container>
   <ng-template #empty>
     <div class="movies-list-container__empty">
-      <h1 class="movies-list-container__empty--title">{{ 'movies-list.empty' | translate }}</h1>
+      <h1 class="movies-list-container__empty--title">
+        {{ 'movies-list.empty' | translate }}
+      </h1>
     </div>
   </ng-template>
   </div>

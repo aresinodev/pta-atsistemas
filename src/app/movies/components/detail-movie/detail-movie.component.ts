@@ -16,8 +16,7 @@ import { HeaderService } from '@services/header.service';
 
 @Component({
   selector: 'app-detail-movie',
-  templateUrl: './detail-movie.component.html',
-  styleUrls: ['./detail-movie.component.scss']
+  templateUrl: './detail-movie.component.html'
 })
 export class DetailMovieComponent implements OnInit {
   movie: Movie;

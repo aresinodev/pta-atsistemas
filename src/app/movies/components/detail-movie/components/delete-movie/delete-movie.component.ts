@@ -6,8 +6,7 @@ import { MoviesService } from '@services/movies.service';
 
 @Component({
   selector: 'app-delete-movie',
-  templateUrl: './delete-movie.component.html',
-  styleUrls: ['./delete-movie.component.scss']
+  templateUrl: './delete-movie.component.html'
 })
 export class DeleteMovieComponent {
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
