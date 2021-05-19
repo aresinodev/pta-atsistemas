@@ -63,7 +63,7 @@
                  [ngClass]="{ 'invalid': movieForm?.invalid && submitted &&
                  (selectedGenres && selectedGenres?.length === 0)}">
       </ng-select>
-      <div *ngIf="movieForm.invalid && submitted &&
+      <div *ngIf="movieForm?.invalid && submitted &&
         (selectedGenres && selectedGenres?.length === 0)"
            class="errors flex flex-col justify-start items-start w-full">
           <span class="errors__error">
@@ -92,7 +92,7 @@
                  [ngClass]="{ 'invalid': movieForm?.invalid && submitted &&
                  (selectedActors && selectedActors?.length === 0)}">
       </ng-select>
-      <div *ngIf="movieForm.invalid && submitted &&
+      <div *ngIf="movieForm?.invalid && submitted &&
         (selectedActors && selectedActors?.length === 0)"
            class="errors flex flex-col justify-start items-start w-full">
           <span class="errors__error">

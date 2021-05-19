@@ -128,7 +128,7 @@ export class ManageMovieComponent implements OnInit {
   }
 
   public disableForm(): boolean {
-    return this.movieForm.invalid || (!this.selectedActors ||
+    return this.movieForm?.invalid || (!this.selectedActors ||
     (this.selectedActors && this.selectedActors.length === 0)) ||
     (!this.selectedGenres || (this.selectedGenres && this.selectedGenres.length === 0))
   }
