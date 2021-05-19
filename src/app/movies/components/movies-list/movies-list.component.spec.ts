@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 
 import { MoviesListComponent } from './movies-list.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToastrModule } from 'ngx-toastr';
-import { Router } from '@angular/router';
 
 describe('MoviesListComponent', () => {
   let component: MoviesListComponent;
@@ -40,5 +42,14 @@ describe('MoviesListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Click on the add movie button', () => {
+    const routerSvc = TestBed.get(Router);
+
+    const addMovieBtn = fixture.debugElement.query(By.css('.add-movie'));
+    addMovieBtn.triggerEventHandler('click', {});
+
+    expect(routerSvc.navigate).toHaveBeenCalledWith(['/movies/create']);
   });
 });

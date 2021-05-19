@@ -34,7 +34,7 @@ export class ManageMovieComponent implements OnInit {
 
   constructor(private headerSvc: HeaderService,
               private translateSvc: TranslateService,
-              private route: ActivatedRoute,
+              public route: ActivatedRoute,
               private moviesSvc: MoviesService,
               private formBuilder: FormBuilder,
               private actorsSvc: ActorsService,
@@ -53,7 +53,7 @@ export class ManageMovieComponent implements OnInit {
         return of(null);
       })
     ).subscribe(
-      async (movie: Movie) => {
+      (movie: Movie) => {
         this.movieForm = this.formBuilder.group({
           'title': new FormControl('', [Validators.required]),
           'poster': new FormControl('', [Validators.required]),

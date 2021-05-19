@@ -130,7 +130,7 @@
     },
     {
       "id": 8,
-      "title": "Godzilla vs. Mechagodzilla II (Gojira VS Mekagojira)",
+      "title": "Godzilla vs. Mechagodzilla II",
       "poster": null,
       "genre": [
         "Action",
@@ -197,23 +197,6 @@
         6
       ],
       "company": 5
-    },
-    {
-      "id": 12,
-      "title": "Titanic",
-      "poster": "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-      "genre": [
-        "Drama",
-        "Romance"
-      ],
-      "year": 1997,
-      "imdbRating": 7.8,
-      "actors": [
-        1,
-        3
-      ],
-      "duration": 194,
-      "company": 3
     }
   ],
   "actors": [

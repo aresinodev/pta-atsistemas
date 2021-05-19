@@ -1,12 +1,40 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ManageMovieComponent } from './manage-movie.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToastrModule } from 'ngx-toastr';
 import { FormBuilder } from '@angular/forms';
-import { of } from 'rxjs';
+
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
+
+import { ManageMovieComponent } from './manage-movie.component';
+import { MoviesService } from '@services/movies.service';
+import { Movie } from '@shared/models/movie.interface';
+import { HeaderService } from '@services/header.service';
+
+class MockMoviesService extends MoviesService {
+  public getMovie(id: number): Observable<Movie> {
+    return of({
+      "id": 8,
+      "title": "Godzilla vs. Mechagodzilla II",
+      "poster": null,
+      "genre": [
+        "Action",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "year": 1993,
+      "duration": 121,
+      "imdbRating": 5.36,
+      "actors": [
+        3,
+        4,
+        5
+      ],
+      "company": 4
+    });
+  }
+}
 
 describe('ManageMovieComponent', () => {
   let component: ManageMovieComponent;
@@ -38,6 +66,10 @@ describe('ManageMovieComponent', () => {
           provide: Router,
           useValue: router
         },
+        {
+          provide: MoviesService,
+          useClass: MockMoviesService
+        },
         FormBuilder
       ]
     })
@@ -52,5 +84,22 @@ describe('ManageMovieComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ManageMovieComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
+  });
+
+  it('ngOnInit without route params', () => {
+    component.route.params = of({});
+    const headerSvc = TestBed.get(HeaderService);
+    const spyOnSetTitle = spyOn(headerSvc, 'setTitle');
+
+    component.ngOnInit();
+
+    expect(spyOnSetTitle).toHaveBeenCalledWith('manage-movie.create');
   });
 });
