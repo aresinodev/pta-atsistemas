@@ -34,11 +34,19 @@ export class MoviesService {
     return this.http.delete<Movie>(`${ MOVIES }/${ id }`);
   }
 
+  public update(movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(`${ MOVIES }/${ movie.id }`, movie);
+  }
+
   public deleteMovieStore(id: number): void {
     this.dataSvc.deleteMovie(id);
   }
 
   public addMovieStore(movie: Movie): void {
     this.dataSvc.addMovie(movie);
+  }
+
+  public updateMovieStore(movie: Movie): void {
+    this.dataSvc.updateMovie(movie);
   }
 }

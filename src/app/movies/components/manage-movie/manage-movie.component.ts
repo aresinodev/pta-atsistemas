@@ -88,7 +88,8 @@ export class ManageMovieComponent implements OnInit {
       year: +this.formControls.year.value,
       imdbRating: +this.formControls.rating.value,
       actors: this.selectedActors.map((actor: Actor) => actor.id),
-      duration: +this.formControls.duration.value
+      duration: +this.formControls.duration.value,
+      company: +this.formControls.company.value
     };
 
     this.moviesSvc.create(movie)
@@ -104,21 +105,23 @@ export class ManageMovieComponent implements OnInit {
   public update(): void {
     this.submitted = true;
 
-    const movie: Partial<Movie> = {
+    const movie: Movie = {
+      id: this.movie.id,
       title: this.formControls.title.value,
       poster: this.formControls.poster.value,
       genre: this.selectedGenres,
       year: +this.formControls.year.value,
       imdbRating: +this.formControls.rating.value,
       actors: this.selectedActors.map((actor: Actor) => actor.id),
-      duration: +this.formControls.duration.value
+      duration: +this.formControls.duration.value,
+      company: +this.formControls.company.value
     };
 
-    this.moviesSvc.create(movie)
+    this.moviesSvc.update(movie)
       .subscribe(
         (item: Movie) => {
           this.submitted = false;
-          this.moviesSvc.addMovieStore(item);
+          this.moviesSvc.updateMovieStore(item);
           this.router.navigate(['/movies']);
         }
       );

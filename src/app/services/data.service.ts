@@ -87,6 +87,14 @@ export class DataService {
     this.moviesSubject.next([...newArrMovies]);
   }
 
+  public updateMovie(movie: Movie): void {
+    const movies = this.moviesSubject.getValue();
+    const indexInArray = movies.findIndex((item: Movie) => item.id === movie.id);
+    movies[indexInArray] = movie;
+
+    this.moviesSubject.next([...movies]);
+  }
+
   public getActorsByMovie(id: number): Actor[] {
     return this.actorsSubject.getValue().filter((actor: Actor) => actor.movies.includes(id));
   }
