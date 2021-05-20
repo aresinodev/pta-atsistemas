@@ -23,7 +23,7 @@ export class AppComponent {
     fromEvent(this.document, 'click')
     .subscribe(
       (event: Event) => {
-        const isNavMenu = (event.target as HTMLElement).classList.contains('menu');
+        const isNavMenu = (event.target as HTMLElement).classList.toString().includes('menu');
         if (!isNavMenu && this.document.querySelector('.menu').clientWidth === 300) {
           (this.document.querySelector('.menu') as HTMLElement).style.width = '0';
         }
