@@ -5,12 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { SpinnerInterceptor } from './shared/interceptors/spinner.interceptor';
-import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from '@shared/shared.module';
+import { SpinnerInterceptor } from '@shared/interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [

@@ -13,7 +13,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { SpinnerService } from '@services/spinner.service';
 
-
 @Injectable({
   providedIn: 'root',
 })

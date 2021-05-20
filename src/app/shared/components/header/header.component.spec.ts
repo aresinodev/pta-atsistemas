@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 import { HeaderComponent } from './header.component';
-import { By } from '@angular/platform-browser';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -20,7 +19,6 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       imports: [
-        //RouterTestingModule,
         TranslateModule.forRoot()
       ],
       providers: [

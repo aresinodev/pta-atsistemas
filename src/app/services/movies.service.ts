@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { find, mergeMap } from 'rxjs/operators';
@@ -7,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { Movie } from '@shared/models/movie.interface';
 import { DataService } from '@services/data.service';
-import { HttpClient } from '@angular/common/http';
 import { MOVIES } from '../app.properties';
 
 @Injectable({
