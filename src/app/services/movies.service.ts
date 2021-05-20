@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { find, mergeMap } from 'rxjs/operators';
+import { delay, find, mergeMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -26,7 +26,8 @@ export class MoviesService {
     return this.movies$
     .pipe(
       mergeMap((movies: Movie[]) => movies),
-      find((movie: Movie) => movie?.id === id)
+      find((movie: Movie) => movie?.id === id),
+      delay(50)
     );
   }
 

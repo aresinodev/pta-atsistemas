@@ -82,8 +82,8 @@ export class ManageMovieComponent implements OnInit {
     this.submitted = true;
 
     const movie: Partial<Movie> = {
-      title: this.formControls.title.value,
-      poster: this.formControls.poster.value,
+      title: this.formControls.title.value.trim(),
+      poster: this.formControls.poster.value.trim(),
       genre: this.selectedGenres,
       year: +this.formControls.year.value,
       imdbRating: +this.formControls.rating.value,
@@ -107,8 +107,8 @@ export class ManageMovieComponent implements OnInit {
 
     const movie: Movie = {
       id: this.movie.id,
-      title: this.formControls.title.value,
-      poster: this.formControls.poster.value,
+      title: this.formControls.title.value.trim(),
+      poster: this.formControls.poster.value.trim(),
       genre: this.selectedGenres,
       year: +this.formControls.year.value,
       imdbRating: +this.formControls.rating.value,
