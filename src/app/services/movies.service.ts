@@ -22,7 +22,6 @@ export class MoviesService {
               private translateSvc: TranslateService) {}
 
   public getMovie(id: number): Observable<Movie> {
-    // @ts-ignore
     return this.movies$
     .pipe(
       mergeMap((movies: Movie[]) => movies),

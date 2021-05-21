@@ -7,7 +7,8 @@
     "build": "ng build --prod --aot=true --buildOptimizer=true",
     "dev": "ng serve --host 0.0.0.0 --live-reload false",
     "test": "ng test --code-coverage",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "server:start": "json-server --watch data/db.json --delay 1000 --port 3000"
   },
   "private": true,
   "dependencies": {

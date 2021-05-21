@@ -3,9 +3,12 @@
 Proyecto creado con Angular 12.
 
 # Levantar backend con json-server.
+Utilizamos la librería `json-server`. Esta librería nos genera un backend que se alimenta de un
+archivo JSON.
+Para instalar esta librería ejecutamos en consola el siguiente comando `npm i -D json-server`.
 
-Antes de levantar el servidor de desarrollo, en otra pestaña nos vamos a la carpeta `data` dentro
-de `assets` y ejecutamos el siguiente comando `json-server --watch db.json --delay 1000 --port 3000`.
+Antes de levantar el servidor de desarrollo, en otra pestaña nos vamos a la carpeta `data`
+que se encuentra en la raíz del proyecto. Ejecutamos el siguiente script `npm run server:start`.
 Esto nos levantará un backend que se alimenta de los datos de nuestro archivo `db.json`.
 
 ## Servidor de desarrollo
